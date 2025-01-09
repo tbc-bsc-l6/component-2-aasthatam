@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+       "title" => "Tasty Bites"
+    ]);
 });
 
 Route::get('/dashboard', function () {
