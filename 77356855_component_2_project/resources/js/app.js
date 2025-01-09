@@ -1,7 +1,11 @@
-import './bootstrap';
+// import './bootstrap';
 
-import Alpine from 'alpinejs';
+// import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+// window.Alpine = Alpine;
 
-Alpine.start();
+// Alpine.start();
+
+import "@popperjs/core";
+window.$=window.jQuery = require("jquery");
+window.bootstrap = require("bootstrap");
