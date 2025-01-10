@@ -16,9 +16,22 @@
         </div>
         
     </div>
+    <div class="row">
+      @include('home.blog')
+        <div class="col-lg-1 col-0" >
+
+        </div>
+        <div class="col-lg-3 col-12 mt-5 ps-lg-4" >
+            <div class="row">
+                @include('home.trending')
+                @include('home.recent')
+                @include('home.tags')
+
+            </div>
+        </div>
+    </div>
 </div>
   
    <script src ="{{ asset ('js/app.js')}}"></script>
-    
 </body>
 </html>

@@ -18288,6 +18288,9 @@ __webpack_require__.r(__webpack_exports__);
 
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window.bootstrap = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+function redirectTo(url) {
+  window.location.href = url;
+}
 })();
 
 /******/ })()
