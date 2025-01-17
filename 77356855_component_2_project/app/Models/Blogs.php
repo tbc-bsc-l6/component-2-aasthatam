@@ -23,4 +23,8 @@ class Blogs extends Model
            "updated_at"
 
     ];
+
+    public function tags(){
+        return $this->hasMany(BlogTags::class, 'blogs_id');
+    }
 }
