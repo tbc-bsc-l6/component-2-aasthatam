@@ -30,6 +30,30 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 g-0 mt-2">
+            <nav>
+                <ul class="pagination justify-content-center">
+                   <li class="page-item @if($page_number === 1) disabled @endif">
+                       <a class="page-link" href="/?page={{ $page_number - 1}}" >
+                        Previous
+                        </a>
+                   </li>
+                   @for ($i = 0; $i < ceil($total_blogs / $page_length); $i++)
+                        <li class="page-item @if($page_number === $i + 1) active @endif">
+                            <a class="page-link" href="/?page={{ $i + 1}}" >{{ $i + 1}}</a>
+                        </li>
+                   @endfor
+                   <li class="page-item @if($page_number >= ceil($total_blogs / $page_length) ) disabled @endif">
+                      <a class="page-link" href="/?page={{ $page_number + 1}}" >
+                       Next
+                       </a>
+                   </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
 </div>
 @include('layouts.shared.footer')
    <script src ="{{ asset ('js/app.js')}}"></script>
