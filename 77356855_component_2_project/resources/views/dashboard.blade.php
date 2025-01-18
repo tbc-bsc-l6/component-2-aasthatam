@@ -1,17 +1,24 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @include('layouts.shared.header')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+</head>
+<body style="background-color: #F8F9F9">
+
+   @include('layouts.shared.navbar') 
+   
+   <div class="container ps-5 pe-5">
+    <div class="row">
+        <div class="col-12 p-2 text-center mt-4 mb-4 border-bottom-black">
+        <h1 style='font-family: "Dancing Script", cursive;'>Dashboard</h1>
+        <p style='font-family: "Lora", serif;'>Delicious recipes, made easy – Tasty Bites brings the flavors you love to your kitchen!</p>
+        </div>    
+    </div>  
+    
+</div>
+@include('layouts.shared.footer')
+   <script src ="{{ asset ('js/app.js')}}"></script>
+</body>
+</html>
+
