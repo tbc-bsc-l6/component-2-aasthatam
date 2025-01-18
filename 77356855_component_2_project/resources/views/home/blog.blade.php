@@ -13,10 +13,10 @@
                         {{ $blog['date']}}
                     </small>
                     <br>
-                    @foreach (explode(",",$blog['tags']) as $tag)
-                        <span class="text-primary fw-bolder gs-6 pe-1">{{$tag}}</span>
+                    @foreach ($blog['tags'] as $tag)
+                        <span class="text-primary fw-bolder gs-6 pe-1">{{ $tag ['tag']}}</span>
 
-                        @if($loop->iteration < count(explode(",", $blog['tags'])))
+                        @if($loop->iteration < count($blog['tags']))
                         <span class="text-primary fw-bolder gs-6 pe-1">&#x2024;</span>
                         @endif
                     @endforeach
