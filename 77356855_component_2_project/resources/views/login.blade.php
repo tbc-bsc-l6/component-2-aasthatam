@@ -90,15 +90,15 @@
             loginSubmitted = true;
 
             $.post({
-                "url": "/api/login",
-                "data": {
-                "_token": "{{ csrf_token() }}",
-                "email": $("#email").val(),
-                "password": $("#password").val()
+                url: "{{ route('login.post') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    email: $("#email").val(),
+                    password: $("#password").val()
                 },
-                success: function(reponse) {
-                loginSubmitted = false;
-                window.location.href = "/dashboard";
+                success: function (response) {
+                    loginSubmitted = false;
+                    window.location.href = response.redirect;
                 },
                 error: function(response) {
                 loginSubmitted = false;
