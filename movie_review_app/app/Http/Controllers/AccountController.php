@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class AccountController extends Controller
 {
@@ -70,10 +71,17 @@ class AccountController extends Controller
     }
 
     public function updateProfile(Request $request){
-        $validator = Validator::make($request->all(),[
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email,'.Auth::user()->id.',id',
-        ]);
+
+        $rules = [
+                'name' => 'required|min:3',
+                'email' => 'required|email|unique:users,email,'.Auth::user()->id.',id',
+        ];
+
+        if (!empty($request->image)){
+            $rules['image'] = 'image';
+        }
+
+        $validator = Validator::make($request->all(),$rules);
 
         if ($validator->fails()){
             return redirect()->route('account.profile')->withInput()->withErrors($validator);
@@ -83,6 +91,19 @@ class AccountController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
+
+        if (!empty($request->image)){
+
+            File::delete(public_path('uploads/profile/'.$user->image));
+
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $imageName = time().'.'.$ext;
+            $image->move(public_path('uploads/profile'),$imageName);
+
+            $user->image = $imageName;
+            $user->save();
+        }
 
         return redirect()->route('account.profile')->with('success','Profile updated Successfully.');
 
